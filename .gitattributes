@@ -1,0 +1,10 @@
+# Store text with LF in the repository; check out with the platform's line endings.
+* text=auto
+
+# Unreal and image assets are binary.
+*.uasset binary
+*.umap binary
+*.png binary
+
+# Shell scripts run under bash (WSL / Linux) and must keep LF.
+*.sh text eol=lf
