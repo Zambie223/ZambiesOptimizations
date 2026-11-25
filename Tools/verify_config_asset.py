@@ -12,6 +12,7 @@ MOD = "ZambiesOptimizations"
 EXPECTED = {
     "SkelBuildables": ("BP_ConfigPropertyBool_C", False),
     "SkelUnpossessed": ("BP_ConfigPropertyBool_C", False),
+    "SkipRepGraphDump": ("BP_ConfigPropertyBool_C", False),
 }
 
 cls = unreal.load_class(None, f"/{MOD}/ZambiesOptimizationsConfiguration.ZambiesOptimizationsConfiguration_C")

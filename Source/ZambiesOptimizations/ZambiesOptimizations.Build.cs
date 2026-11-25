@@ -38,5 +38,9 @@ public class ZambiesOptimizations : ModuleRules
 			PublicDependencyModuleNames.AddRange(new string[] {"AnimGraph"});
 		}
 		PublicDependencyModuleNames.AddRange(new string[] {"FactoryGame", "SML"});
+
+		// Development aids (ZOpt.DevChat). 1 only for test builds: set to 0 for every public release (the release check
+		// scans the zips for "ZOpt.DevChat", and a dev build logs a warning at startup).
+		PublicDefinitions.Add("ZOPT_DEV_COMMANDS=0");
 	}
 }

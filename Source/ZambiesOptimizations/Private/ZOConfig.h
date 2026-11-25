@@ -4,7 +4,7 @@
 // so a player's own copy of the file changes nothing on the server they join.
 //
 // Each setting is mirrored by a ZOpt.* console variable. The file sets it at startup (and again when the file changes,
-// e.g. from the Mods menu); the console changes it live until restart without touching the file.
+// e.g. from the Mods menu or /zopt); the console changes it live until restart without touching the file.
 #pragma once
 
 #include "CoreMinimal.h"
@@ -26,3 +26,26 @@ private:
 	UFUNCTION()
 	void OnConfigValueChanged();
 };
+
+namespace ZOpt::Config
+{
+	/** One switch as the /zopt chat command shows it. */
+	struct FSwitchState
+	{
+		FString Key;
+		FString Description;
+		bool bLive = false;
+		/** False when the settings file is not registered (the switch then exists only as a console variable). */
+		bool bHasFileValue = false;
+		bool bFileValue = false;
+	};
+
+	void DescribeSwitches(TArray<FSwitchState>& OutSwitches);
+
+	/**
+	 * Switches one setting (key matched without regard to case): saves it to the settings file and applies it at once.
+	 * Returns false with OutError for an unknown key. bOutSaved is false when the settings file is not registered; the
+	 * change then lasts until restart.
+	 */
+	bool SetSwitch(const FString& Key, bool bOn, FString& OutKey, bool& bOutSaved, FString& OutError);
+}

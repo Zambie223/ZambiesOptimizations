@@ -18,8 +18,8 @@ SML_PROPS = "/SML/Interface/UI/Menu/Mods/ConfigProperties"
 
 COMMON_NOTE = (
     "Acts only on a dedicated server, which reads its own file: FactoryGame/Configs/ZambiesOptimizations.cfg\n"
-    "in the server's install folder. Stop the server before editing that file. Changing this in your own game\n"
-    "does not change the server you join."
+    "in the server's install folder. Stop the server before editing that file, or use the /zopt chat command\n"
+    "(administrators). Changing this in your own game does not change the server you join."
 )
 
 # key, default, display name, tooltip
@@ -31,6 +31,11 @@ SETTINGS = [
     ("SkelUnpossessed", False, "Skip skeletal mesh updates on offline players' bodies",
      "The server stops updating the skeletons of pawns without a controller: the bodies of players who are offline.\n"
      "A body is switched back on when its player rejoins. Live switch: console variable ZOpt.SkelUnpossessed (until restart)."),
+    ("SkipRepGraphDump", False, "Skip the replication debug dump",
+     "When the server meets an actor that can no longer be sent to players (seen when a player joined), the engine\n"
+     "writes its whole replication graph to the log: over 100 MB on a large save, freezing the server for seconds.\n"
+     "This skips that dump; the actor is handled the same way either way. Live switch: console variable\n"
+     "ZOpt.SkipRepGraphDump (until restart)."),
 ]
 
 

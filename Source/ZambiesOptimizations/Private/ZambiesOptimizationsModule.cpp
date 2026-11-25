@@ -14,7 +14,8 @@ DEFINE_LOG_CATEGORY(LogZOpt);
 //  - Runs only where it helps (a dedicated-server optimization does nothing on a client or in single player) and never
 //    requires players to install the mod.
 //
-// Current optimizations: the skeletal mesh tick switch (ZOSkelMesh.cpp). Read-only tools: ZOpt.SkelReport,
+// Current optimizations: the skeletal mesh tick switch (ZOSkelMesh.cpp) and the replication debug dump switch
+// (ZORepGraph.cpp). Switches from chat: /zopt (ZOChatCommand.cpp, administrators). Read-only tools: ZOpt.SkelReport,
 // ZOpt.DockStats (ZODockStats.cpp).
 //
 // History: this mod was developed as "TickOpt" (Tick Optimizer) up to 0.1.0 and renamed before its first public
@@ -23,6 +24,9 @@ DEFINE_LOG_CATEGORY(LogZOpt);
 
 void FZambiesOptimizationsModule::StartupModule()
 {
+#if ZOPT_DEV_COMMANDS
+	UE_LOG(LogZOpt, Warning, TEXT("Zambie's Optimizations: development build (ZOPT_DEV_COMMANDS=1, ZOpt.DevChat): not for release"));
+#endif
 #if !WITH_EDITOR
 	if (!IsRunningDedicatedServer())
 	{
