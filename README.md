@@ -36,7 +36,7 @@ Trains, trucks and drones kept working normally in these tests (5 to 7 minute st
 
 The current optimizations need the mod on the **server only**. Players do not need it.
 
-**No prebuilt download is published yet.** The zips below are what a release will contain. Until then, the mod can be built from this source with the Satisfactory modding toolchain (see the [modding documentation](https://docs.ficsit.app/)).
+Download the zip for your server from the [Releases page](https://github.com/Zambie223/ZambiesOptimizations/releases).
 
 | Server | Download | Extract into |
 |---|---|---|
